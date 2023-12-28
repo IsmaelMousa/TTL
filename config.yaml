@@ -1,1 +1,5 @@
-# project configurations
+app:
+  name: "TODO Task List"
+  port: 8000
+  version: 1
+  logLevel: "ERROR"
