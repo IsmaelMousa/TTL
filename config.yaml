@@ -1,5 +1,13 @@
 app:
   name: "TODO Task List"
-  port: 8000
+  port: 8080
   version: 1
   logLevel: "ERROR"
+
+database:
+  name: "TODO"
+  driverName: "postgresql"
+  username: "postgres"
+  password: "test"
+  host: "localhost"
+  port: 5432
