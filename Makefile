@@ -1,7 +1,10 @@
 install:
 	@echo "========================== Install Dependencies ===========================\n"
-	@poetry install --only main
+	@pip install poetry
+	@poetry config virtualenvs.in-project true
+	@poetry install --no-root
 	@echo "================================== Done ==================================="
+
 lint:
 	@echo "========================== Check linting ===========================\n"
 	@(pylint '**/*.py' && echo "=============================== Pass ===============================") || echo "=============================== Fail ==============================="
