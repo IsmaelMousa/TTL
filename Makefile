@@ -1,20 +1,21 @@
+help h:
+	@echo "Available Commands:"
+	@sed -n '/^[a-zA-Z0-9_.]*:/s/:.*//p' < Makefile
+
 install:
-	@echo "========================== Install Dependencies ===========================\n"
+	@echo "Installing Dependencies..."
 	@pip install poetry
 	@poetry config virtualenvs.in-project true
 	@poetry install --no-root
-	@echo "================================== Done ==================================="
 
 lint:
-	@echo "========================== Check linting ===========================\n"
-	@(pylint '**/*.py' && echo "=============================== Pass ===============================") || echo "=============================== Fail ==============================="
-
+	@echo "Check Linting..."
+	@pylint "**/*.py"
 test:
-	@pytest
+	@pytest --cache-clear
 
 coverage:
-	@pytest --cov --cov-report=term-missing
+	@pytest --cache-clear --cov --cov-report=term-missing
 
 run:
-	@echo "============================= Uvicorn Running ============================="
 	@uvicorn main:app --reload
