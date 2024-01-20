@@ -2,9 +2,10 @@ import sys
 import os
 from dataclasses import dataclass
 from functools import lru_cache
-from logging import getLogger
 
 from yaml import safe_load, YAMLError
+
+from .logger import get_logger
 
 
 @dataclass(frozen=True)
@@ -42,6 +43,7 @@ class DataBaseConfig:
     password: str
     host: str
     port: int
+    log_level: str
 
 
 @dataclass(frozen=True)
@@ -68,7 +70,7 @@ def get_config() -> Config:
     base_path = os.path.dirname(os.path.abspath(__file__))
     path = os.path.join(base_path, "../config.yaml")
 
-    logger = getLogger()
+    logger = get_logger(level="ERROR")
 
     try:
         with open(path, "r") as file:
@@ -87,16 +89,21 @@ def get_config() -> Config:
                                       username=database_cfg.get("username"),
                                       password=database_cfg.get("password"),
                                       host=database_cfg.get("host"),
-                                      port=database_cfg.get("port"))
+                                      port=database_cfg.get("port"),
+                                      log_level=database_cfg.get("logLevel"))
 
             config = Config(app=app, database=database)
 
         return config
 
     except IOError:  # pragma: no cover
-        logger.error(f"unable to open the config file with path {path}!")
+        logger.error(f"Unable to open the config file with path {path}")
         sys.exit(os.EX_IOERR)
 
     except YAMLError:  # pragma: no cover
-        logger.error("unable to parse the config file!")
+        logger.error("Unable to parse the config file")
         sys.exit(os.EX_IOERR)
+
+    except Exception as exc:  # pragma: no cover
+        logger.error(f"Unhandled Exception: {exc}")
+        sys.exit(1)

@@ -5,12 +5,12 @@ from utils.config import get_config, AppConfig, DataBaseConfig, Config
 
 class TestConfig(TestCase):
     """
-    **Unit test class for the configurations.**
+    Unit tests class for the configurations.
     """
 
     def setUp(self) -> None:
         """
-        **Setup test variables for the configurations.**
+        Setup test variables for the configurations.
 
         :return: None
         """
@@ -24,13 +24,14 @@ class TestConfig(TestCase):
                                            username="postgres",
                                            password="test",
                                            host="localhost",
-                                           port=5432)
+                                           port=5432,
+                                           log_level="ERROR")
 
         self.fake_config = Config(app=fake_app_cfg, database=fake_database_cfg)
 
     def test_get_config(self) -> None:
         """
-        **Testing get_config function, that must return an instance of the Config.**
+        Testing get_config function, that must return an instance of the Config.
 
         :return: None
         """
@@ -39,8 +40,8 @@ class TestConfig(TestCase):
 
         self.assertIsInstance(obj=cfg,
                               cls=Config,
-                              msg="cfg must be an instance of Config!")
+                              msg="cfg must be an instance of Config")
 
         self.assertEqual(first=cfg,
                          second=self.fake_config,
-                         msg="expected to be equal!")
+                         msg="expected to be equal")
