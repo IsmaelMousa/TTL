@@ -1,10 +1,10 @@
 # TODO Task List
 
-![BADGES](https://img.shields.io/badge/BADGES-HERE-blue.svg)
+![CI](https://img.shields.io/github/actions/workflow/status/IsmaelMousa/todo-task-list/ci.yml?style=flat-square&logo=github&label=CI)
 
 ## Overview
 
-Brief high-level overview or tagline for the project
+Fullstack project that simulates a simple TODO task manager application.
 
 ## Description
 
@@ -12,7 +12,8 @@ Provide a more detailed explanation of the project. What problem does it solve? 
 
 ## Goal
 
-Describe the primary goal or objective of the project.
+The main goal of this project is to apply the technologies & tools I have learned, and learn how to build a project
+from scratch to deployment through all development stages.
 
 ## Technologies
 
@@ -23,9 +24,16 @@ Describe the primary goal or objective of the project.
 <a href="https://www.docker.com"><img src="https://logos-world.net/wp-content/uploads/2021/02/Docker-Symbol.png" alt="Docker" title="Docker" height="50"></a>
 <a href="https://python-poetry.org"><img src="https://avatars.githubusercontent.com/u/48722593?s=200&v=4" alt="Poetry" title="Poetry" height="50"></a>
 
-## Features
+## Development Principles
 
-The main features that included in the project
+Software development principles and best practices applied in this project
+
+- **Scalability**
+- **Testability**
+- **Modularity**
+- **Maintainability**
+- **Reliability**
+- **CI/CD**
 
 ## Installation
 
@@ -60,6 +68,7 @@ make install
 Here is the example of how to use the project
 
 ```
+make run
 ```
 
 ## Modules
@@ -68,8 +77,12 @@ You will see this when you open the project
 
 ```zsh
 todo-task-list
+ ├── .github
+ │   └── workflows
+ │   │   └── ci.yml
  ├── errors
- │   └── __init__.py
+ │   ├── __init__.py
+ │   └── custom.py
  ├── infrastructures
  │   ├── __init__.py
  │   └── crud
@@ -88,10 +101,12 @@ todo-task-list
  ├── tests
  │   ├── __init__.py
  │   ├── infrastructures_database.py
- │   └── utils_config.py    
+ │   ├── utils_config.py
+ │   └── utils_logger.py    
  ├── utils
  │   ├── __init__.py
- │   └── config.py     
+ │   ├── config.py
+ │   └── logger.py     
  ├── view
  ├── .gitignore
  ├── config.yaml
@@ -103,7 +118,7 @@ todo-task-list
 ```
 
 <br />
-Briefly description of the purpose of each major module or component in the project
+Briefly description of the purpose of each major module in the project
 
 |      Module       |                  Description                   |
 |:-----------------:|:----------------------------------------------:|
