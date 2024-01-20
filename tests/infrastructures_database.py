@@ -6,12 +6,12 @@ from infrastructures.database import DATABASE_URL
 
 class TestDatabaseURL(TestCase):
     """
-    **Unit test class for sqlalchemy database url.**
+    Unit tests class for the database url.
     """
 
     def setUp(self) -> None:
         """
-        **Setup test values and pattern for DATABASE_URL**
+        Setup test values and pattern for DATABASE_URL
 
         :return: None
         """
@@ -27,9 +27,11 @@ class TestDatabaseURL(TestCase):
 
     def test_database_url(self) -> None:
         """
-        **Testing if the DATABASE_URL matches the expected values and pattern.**
+        Testing if the DATABASE_URL matches the expected values and pattern.
 
         :return: None
         """
 
-        self.assertEqual(first=DATABASE_URL, second=self.fake_database_url)
+        self.assertEqual(first=DATABASE_URL,
+                         second=self.fake_database_url,
+                         msg="database url doesn't match the expected values")
