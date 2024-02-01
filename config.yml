@@ -1,7 +1,7 @@
 app:
-  name: "TODO Task List"
-  port: 8080
-  version: 1
+  name: "TTL"
+  port: 8000
+  version: "1.1.0"
   logLevel: "ERROR"
 
 database:
