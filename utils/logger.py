@@ -14,9 +14,10 @@ def get_logger(level: str) -> Logger:
     custom_fmt = ('{"datetime": "%(asctime)s",'
                   ' "level": "%(levelname)s",'
                   ' "pathname": "%(pathname)s",'
+                  ' "funcName": "%(funcName)s",'
                   ' "message": "%(message)s"}')
 
-    custom_date_fmt = "%b %d %Y %-I:%M %p"
+    custom_date_fmt = "%Y-%m-%d %H:%M:%S"
 
     try:
         logger = getLogger(name=__name__)

@@ -11,12 +11,12 @@ from .logger import get_logger
 @dataclass(frozen=True)
 class AppConfig:
     """
-    **The configuration of the Application.**
+    Represents the interface of the application's configuration.
 
-    - **name**: The name of the application.
-    - **port**: The port of the application.
-    - **version**: The version of the application.
-    - **log_level**: The log level of the application.
+    - name: The name of the application.
+    - port: The port of the application.
+    - version: The version of the application.
+    - log_level: The logging level of the application.
     """
 
     name: str
@@ -28,13 +28,13 @@ class AppConfig:
 @dataclass(frozen=True)
 class DataBaseConfig:
     """
-    **The configuration of the Database**.
+    Represents the interface of the database's configuration.
 
-    - **name**: The name of the Database.
-    - **username**: The username to connect to the Database.
-    - **password**: The password associated with the provided username.
-    - **host**: The host where the Database server is running.
-    - **port**: The port number on which the Database server is listening for connections.
+    - name: The name of the database.
+    - username: The username to connect to the database.
+    - password: The password associated with the provided username.
+    - host: The host where the database server is running.
+    - port: The port number on which the database server is listening for connections.
     """
 
     name: str
@@ -49,10 +49,10 @@ class DataBaseConfig:
 @dataclass(frozen=True)
 class Config:
     """
-    **The base of all configurations.**
+    Represents the interface of the base configurations.
 
-    - **app**: Represents the configuration of the Application.
-    - **databases**: Represents the configuration of the Database.
+    - app: Application's configuration.
+    - databases: Database's configuration.
     """
 
     app: AppConfig
@@ -62,13 +62,13 @@ class Config:
 @lru_cache(maxsize=1)
 def get_config() -> Config:
     """
-    **Getting the base of all configurations**
+    Getting the base configurations.
 
     :return: instance of Config
     """
 
     base_path = os.path.dirname(os.path.abspath(__file__))
-    path = os.path.join(base_path, "../config.yaml")
+    path = os.path.join(base_path, "../config.yml")
 
     logger = get_logger(level="ERROR")
 

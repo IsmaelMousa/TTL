@@ -1,42 +1,69 @@
 import sys
+from dataclasses import dataclass
 
-from sqlalchemy.engine import create_engine
+from sqlalchemy.engine import Engine, create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 from sqlalchemy.exc import NoSuchModuleError, ArgumentError
 
 from utils import get_config, get_logger
 
-database_cfg = get_config().database
-logger = get_logger(level=database_cfg.log_level)
 
-try:
-    DATABASE_URL = "{}://{}:{}@{}:{}/{}".format(database_cfg.driver_name,
-                                                database_cfg.username,
-                                                database_cfg.password,
-                                                database_cfg.host,
-                                                database_cfg.port,
-                                                database_cfg.name)
+@dataclass(frozen=True)
+class DataBaseStuff:
+    """
+    Represents the interface for database components.
+    """
+    database_url: str
+    engine: Engine
+    session: sessionmaker
 
-    engine = create_engine(url=DATABASE_URL)
-    session_local = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-    Base = declarative_base()
 
-except NoSuchModuleError as exc:  # pragma: no cover
-    logger.error(exc)
-    sys.exit(1)
+def get_database_stuff() -> DataBaseStuff:
+    """
+    Getting the database components.
 
-except ArgumentError as exc:  # pragma: no cover
-    logger.error(exc)
-    sys.exit(1)
+    :return: instance of DataBaseStuff
+    """
 
-except ValueError as exc:  # pragma: no cover
-    logger.error(exc)
-    sys.exit(1)
+    database_cfg = get_config().database
+    level = database_cfg.log_level
+    logger = get_logger(level=level)
 
-except KeyError as exc:  # pragma: no cover
-    logger.error(f"Invalid key: {exc}")
-    sys.exit(1)
+    try:
+        database_url = "{}://{}:{}@{}:{}/{}".format(database_cfg.driver_name,
+                                                    database_cfg.username,
+                                                    database_cfg.password,
+                                                    database_cfg.host,
+                                                    database_cfg.port,
+                                                    database_cfg.name)
+        engine = create_engine(url=database_url)
+        session = sessionmaker(bind=engine)
 
-except Exception as exc:  # pragma: no cover
-    logger.error(f"Unhandled Exception: {exc}")
-    sys.exit(1)
+        database_stuff = DataBaseStuff(database_url=database_url,
+                                       engine=engine,
+                                       session=session)
+
+        return database_stuff
+
+    except NoSuchModuleError as exc:  # pragma: no cover
+        logger.error(exc)
+        sys.exit(1)
+
+    except ArgumentError as exc:  # pragma: no cover
+        logger.error(exc)
+        sys.exit(1)
+
+    except ValueError as exc:  # pragma: no cover
+        logger.error(exc)
+        sys.exit(1)
+
+    except KeyError as exc:  # pragma: no cover
+        logger.error(f"Invalid key: {exc}")
+        sys.exit(1)
+
+    except Exception as exc:  # pragma: no cover
+        logger.error(f"Unhandled Exception: {exc}")
+        sys.exit(1)
+
+
+Base = declarative_base()
