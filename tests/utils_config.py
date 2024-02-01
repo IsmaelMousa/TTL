@@ -10,13 +10,13 @@ class TestConfig(TestCase):
 
     def setUp(self) -> None:
         """
-        Setup test variables for the configurations.
+        Setup test variables and values for the configurations.
 
         :return: None
         """
-        fake_app_cfg = AppConfig(name="TODO Task List",
-                                 port=8080,
-                                 version=1,
+        fake_app_cfg = AppConfig(name="TTL",
+                                 port=8000,
+                                 version="1.1.0",
                                  log_level="ERROR")
 
         fake_database_cfg = DataBaseConfig(name="TODO",
@@ -31,7 +31,7 @@ class TestConfig(TestCase):
 
     def test_get_config(self) -> None:
         """
-        Testing get_config function, that must return an instance of the Config.
+        Testing if the get_config() matches the expected criteria.
 
         :return: None
         """
@@ -40,8 +40,8 @@ class TestConfig(TestCase):
 
         self.assertIsInstance(obj=cfg,
                               cls=Config,
-                              msg="cfg must be an instance of Config")
+                              msg="get_config() must return instance of Config")
 
         self.assertEqual(first=cfg,
                          second=self.fake_config,
-                         msg="expected to be equal")
+                         msg="values returned by get_config() must match the expected values")
