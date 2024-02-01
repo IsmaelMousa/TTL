@@ -1,6 +1,6 @@
 name: CI
 
-on: [push]
+on: [ push ]
 
 jobs:
   build:
@@ -28,8 +28,8 @@ jobs:
 
       - name: Testing
         run: |
-          poetry run make test
+          poetry run make ci_test
 
       - name: Coverage
         run: |
-          poetry run make coverage
+          poetry run make ci_coverage
