@@ -11,6 +11,7 @@ install:
 lint:
 	@echo "Check Linting..."
 	@pylint "**/*.py"
+
 test:
 	@pytest --cache-clear
 
@@ -19,3 +20,11 @@ coverage:
 
 run:
 	@uvicorn main:app --reload
+
+# Just For GitHub!
+ci_test:
+	@pytest --cache-clear --ignore tests/routers_task.py
+
+ci_coverage:
+	@pytest --cache-clear --cov --cov-report=term-missing --ignore tests/routers_task.py
+
