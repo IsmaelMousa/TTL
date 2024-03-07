@@ -1,11 +1,10 @@
 from unittest import TestCase
-from unittest.mock import MagicMock
-from warnings import filterwarnings
+from unittest.mock import Mock
 
 from sqlalchemy.orm import Session
 
 from infrastructures.crud.task import Manager, get_task_manager
-from schemas import TaskCreate, TaskUpdate
+from schemas import TaskRequest
 from models import Task
 
 
@@ -20,9 +19,7 @@ class TestTaskCRUD(TestCase):
 
         :return: None
         """
-        filterwarnings(action="ignore", category=UserWarning)
-
-        self.fake_db = MagicMock(spec=Session)
+        self.fake_db = Mock(spec=Session)
         self.fake_manager = get_task_manager(db=self.fake_db)
 
         self.fake_db.add.reset_mock()
@@ -49,29 +46,32 @@ class TestTaskCRUD(TestCase):
 
         :return: None
         """
-        fake_new_task = TaskCreate(title="Linkedin",
-                                   description="Creating a new Linkedin account.",
-                                   label="Social Media",
-                                   priority=2,
-                                   status="in progress",
-                                   completed_at="2024-02-05 12:30:00",
-                                   attachment_url="https://linkedin.com/",
-                                   attachment_file_content=b"example content",
-                                   attachment_file_name="example",
-                                   attachment_title="Steps")
+        fake_new_task = TaskRequest(title="Linkedin",
+                                    description="Creating a new Linkedin account.",
+                                    label="SM",
+                                    priority="high",
+                                    status="in progress",
+                                    completed_at="2024-02-05 12:30",
+                                    attachment="https://linkedin.com/")
 
         result = self.fake_manager.creator.create(task=fake_new_task)
+        status = result["status"]
+        message = result["message"]
 
-        actual_id = self.fake_db.add.call_args[0][0].id
-
-        fake_result = {201: "Successfully Created!", "id": actual_id}
+        fake_status = 201
+        fake_message = "Successfully Created!"
 
         self.fake_db.add.assert_called()
         self.fake_db.commit.assert_called()
         self.fake_db.refresh.assert_called()
-        self.assertEqual(first=result,
-                         second=fake_result,
-                         msg="values returned by create() must match the expected values")
+
+        self.assertEqual(first=status,
+                         second=fake_status,
+                         msg=f"expected status_code: {fake_status}, got {status}")
+
+        self.assertEqual(first=message,
+                         second=fake_message,
+                         msg=f"expected message: {fake_message}, got {message}")
 
     def test_get_all(self) -> None:
         """
@@ -79,29 +79,13 @@ class TestTaskCRUD(TestCase):
 
         :return: None
         """
-        result = self.fake_manager.reader.get_all(offset=0, limit=100)
-        fake_result = self.fake_db.query(Task).offset().limit().all()
+        result = self.fake_manager.reader.get_all()
+        fake_result = self.fake_db.query(Task).all()
 
         self.fake_db.query.assert_called()
         self.assertEqual(first=result,
                          second=fake_result,
                          msg="values returned by get_all() must match the expected values")
-
-    def test_get_by_id(self) -> None:
-        """
-        Testing if the get_by_id() operation works as expected.
-
-        :return: None
-        """
-        fake_task_id = 1
-
-        result = self.fake_manager.reader.get_by_id(task_id=fake_task_id)
-        fake_result = self.fake_db.query(Task).filter(Task.id == fake_task_id).first()
-
-        self.fake_db.query.assert_called()
-        self.assertEqual(first=result,
-                         second=fake_result,
-                         msg="values returned by get_by_id() must match the expected values")
 
     def test_get_by_query_priority(self) -> None:
         """
@@ -110,32 +94,32 @@ class TestTaskCRUD(TestCase):
 
         :return: None
         """
-        fake_priority = "2"
+        fake_priority = "medium"
 
         result = self.fake_manager.reader.get_by_query(query=fake_priority)
-        fake_result = self.fake_db.query(Task).filter(Task.priority == int(fake_priority)).all()
+        fake_result = self.fake_db.query(Task).filter(Task.priority == fake_priority).all()
 
         self.fake_db.query.assert_called()
         self.assertEqual(first=result,
                          second=fake_result,
                          msg="values returned based on 'priority' must match the expected values")
 
-    def test_get_by_query_status(self) -> None:
+    def test_get_by_query_label(self) -> None:
         """
         Testing if the get_by_query() operation works as expected
-        when the query searches based on the 'status'.
+        when the query searches based on the 'label'.
 
         :return: None
         """
-        fake_status = "in progress"
+        fake_label = "fake label"
 
-        result = self.fake_manager.reader.get_by_query(query=fake_status)
-        fake_result = self.fake_db.query(Task).filter(Task.status == fake_status).all()
+        result = self.fake_manager.reader.get_by_query(query=fake_label)
+        fake_result = self.fake_db.query(Task).filter(Task.status == fake_label).all()
 
         self.fake_db.query.assert_called()
         self.assertEqual(first=result,
                          second=fake_result,
-                         msg="values returned based on 'status' must match the expected values")
+                         msg="values returned based on 'label' must match the expected values")
 
     def test_get_by_query_title(self) -> None:
         """
@@ -161,33 +145,53 @@ class TestTaskCRUD(TestCase):
         :return: None
         """
         fake_task_id = 1
-        fake_updated_data = TaskUpdate(title="Linkedin Account", priority=4)
+        fake_updated_data = TaskRequest(title="Linkedin Account", priority="low")
 
         result = self.fake_manager.updater.update(task_id=fake_task_id, task=fake_updated_data)
-        fake_result = {200: "Successfully Updated!", "id": fake_task_id}
+        status = result["status"]
+        message = result["message"]
+
+        fake_status = 200
+        fake_message = "Successfully Updated!"
 
         self.fake_db.query.assert_called()
         self.fake_db.add.assert_called()
         self.fake_db.commit.assert_called()
         self.fake_db.refresh.assert_called()
-        self.assertEqual(first=result,
-                         second=fake_result,
-                         msg="values returned by update() must match the expected values")
 
-    def test_delete_all(self) -> None:
+        self.assertEqual(first=status,
+                         second=fake_status,
+                         msg=f"expected message: {fake_status}, got {status}")
+
+        self.assertEqual(first=message,
+                         second=fake_message,
+                         msg=f"expected message: {fake_message}, got {message}")
+
+    def test_delete_all_by_status(self) -> None:
         """
-        Testing if the delete_all() operation works as expected.
+        Testing if the delete_all_by_status() operation works as expected.
 
         :return: None
         """
-        result = self.fake_manager.deleter.delete_all()
-        fake_result = {200: "Tasks Successfully Deleted!"}
+        fake_task_status = "backlog"
+
+        result = self.fake_manager.deleter.delete_all_by_status(status=fake_task_status)
+        status = result["status"]
+        message = result["message"]
+
+        fake_status = 200
+        fake_message = "Tasks Successfully Deleted!"
 
         self.fake_db.query.assert_called()
-        self.fake_db.query(Task).delete.assert_called()
-        self.assertEqual(first=result,
-                         second=fake_result,
-                         msg="values returned by delete_all() must match the expected values")
+        self.fake_db.query(Task).filter().delete.assert_called()
+
+        self.assertEqual(first=status,
+                         second=fake_status,
+                         msg=f"expected status_code: {fake_status}, got {status}")
+
+        self.assertEqual(first=message,
+                         second=fake_message,
+                         msg=f"expected status_code: {message}, got {fake_message}")
 
     def test_delete_by_id(self) -> None:
         """
@@ -198,11 +202,20 @@ class TestTaskCRUD(TestCase):
         fake_task_id = 1
 
         result = self.fake_manager.deleter.delete_by_id(task_id=fake_task_id)
-        fake_result = {200: "Successfully Deleted!", "id": fake_task_id}
+        status = result["status"]
+        message = result["message"]
+
+        fake_status = 200
+        fake_message = "Successfully Deleted!"
 
         self.fake_db.query.assert_called()
         self.fake_db.delete.assert_called()
         self.fake_db.commit.assert_called()
-        self.assertEqual(first=result,
-                         second=fake_result,
-                         msg="values returned by delete_by_id() must match the expected values")
+
+        self.assertEqual(first=status,
+                         second=fake_status,
+                         msg=f"expected status_code: {fake_status}, got {status}")
+
+        self.assertEqual(first=message,
+                         second=fake_message,
+                         msg=f"expected status_code: {message}, got {fake_message}")

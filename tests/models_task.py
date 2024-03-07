@@ -1,5 +1,4 @@
 from typing import Optional
-from datetime import datetime
 from unittest import TestCase
 
 from sqlalchemy.orm import Mapped
@@ -22,15 +21,12 @@ class TestTaskModel(TestCase):
                                  "title": Mapped[str],
                                  "description": Mapped[Optional[str]],
                                  "label": Mapped[Optional[str]],
-                                 "priority": Mapped[int],
+                                 "priority": Mapped[str],
                                  "status": Mapped[str],
-                                 "attachment_url": Mapped[Optional[str]],
-                                 "attachment_file_content": Mapped[Optional[bytes]],
-                                 "attachment_file_name": Mapped[Optional[str]],
-                                 "attachment_title": Mapped[Optional[str]],
-                                 "created_at": Mapped[datetime],
-                                 "last_update": Mapped[datetime],
-                                 "completed_at": Mapped[datetime]}
+                                 "attachment": Mapped[Optional[str]],
+                                 "created_at": Mapped[str],
+                                 "last_update": Mapped[str],
+                                 "completed_at": Mapped[str]}
 
     def test_task_model_dtypes(self) -> None:
         """
