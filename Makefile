@@ -19,12 +19,5 @@ coverage:
 	@pytest --cache-clear --cov --cov-report=term-missing
 
 run:
-	@uvicorn main:app --reload
-
-# Just For GitHub!
-ci_test:
-	@pytest --cache-clear --ignore tests/routers_task.py
-
-ci_coverage:
-	@pytest --cache-clear --cov --cov-report=term-missing --ignore tests/routers_task.py
-
+	@echo "http://localhost:8000/ttl/index.html"
+	@python3 main.py
