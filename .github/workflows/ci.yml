@@ -28,8 +28,8 @@ jobs:
 
       - name: Testing
         run: |
-          poetry run make ci_test
+          poetry run make test
 
       - name: Coverage
         run: |
-          poetry run make ci_coverage
+          poetry run make coverage

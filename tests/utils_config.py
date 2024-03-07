@@ -1,6 +1,5 @@
 from unittest import TestCase
-
-from utils.config import get_config, AppConfig, DataBaseConfig, Config
+from utils.config import get_config, Config, AppConfig, DataBaseConfig
 
 
 class TestConfig(TestCase):
@@ -14,20 +13,18 @@ class TestConfig(TestCase):
 
         :return: None
         """
-        fake_app_cfg = AppConfig(name="TTL",
+        self.app_cfg = AppConfig(host="localhost",
                                  port=8000,
+                                 path="ttl",
                                  version="1.1.0",
                                  log_level="ERROR")
-
-        fake_database_cfg = DataBaseConfig(name="TODO",
-                                           driver_name="postgresql",
+        self.database_cfg = DataBaseConfig(driver_name="postgresql",
                                            username="postgres",
                                            password="test",
                                            host="localhost",
                                            port=5432,
-                                           log_level="ERROR")
-
-        self.fake_config = Config(app=fake_app_cfg, database=fake_database_cfg)
+                                           name="TODO")
+        self.cfg = Config(app=self.app_cfg, database=self.database_cfg)
 
     def test_get_config(self) -> None:
         """
@@ -35,13 +32,18 @@ class TestConfig(TestCase):
 
         :return: None
         """
-
-        cfg = get_config()
-
-        self.assertIsInstance(obj=cfg,
+        self.assertIsInstance(obj=get_config(),
                               cls=Config,
-                              msg="get_config() must return instance of Config")
+                              msg="get_config() must return an instance of Config")
 
-        self.assertEqual(first=cfg,
-                         second=self.fake_config,
+        self.assertIsInstance(obj=self.app_cfg,
+                              cls=AppConfig,
+                              msg="app_cfg must be an instance of AppConfig")
+
+        self.assertIsInstance(obj=self.database_cfg,
+                              cls=DataBaseConfig,
+                              msg="database_cfg must be an instance of DataBaseConfig")
+
+        self.assertEqual(first=self.cfg,
+                         second=get_config(),
                          msg="values returned by get_config() must match the expected values")

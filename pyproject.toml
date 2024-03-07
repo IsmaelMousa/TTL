@@ -36,10 +36,10 @@ norecursedirs = "__init__.py"
 
 [tool.coverage.run]
 source = ["."]
-omit = ["main.py", "*/__init__.py", "tests/*", ".venv/*"]
+omit = ["main.py", "*/__init__.py", "tests/*", ".venv/*", "routers/task.py"]
 
 
 [tool.pylint]
-disable = ["C0114", "C0209", "W0511", "W0718", "W1203", "W1514", "R0801", "R0903", "R0904"]
+disable = ["C0114", "C0209", "W0511", "W0707", "W0718", "W1203", "W1514", "R0801", "R0903", "R0904"]
 ignore-paths = [".venv"]
 max-line-length = 100

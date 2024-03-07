@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TTL</title>
+    <meta charset="UTF-8">
+    <meta name="description"
+          content="Simulator of a todo task list application, combined with some fun features using AI">
+    <meta name="keywords" content="todo, task, manager, bootstrap, fastapi, docker, python, postgresql, sqlalchemy">
+    <meta name="author" content="Ismael Mousa">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="canonical" href="https://github.com/IsmaelMousa/todo-task-list">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/website-icon.png">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-primary opacity-50">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link icon-link icon-link-hover" href="https://github.com/IsmaelMousa"
+                       title="GitHub" target="_blank"><i
+                            class="bi bi-github fs-6 text-white"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link icon-link icon-link-hover" href="https://www.linkedin.com/in/ismaelmousa"
+                       title="LinkedIn" target="_blank"><i
+                            class="bi bi-linkedin fs-6 text-white"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link icon-link icon-link-hover" href="https://www.facebook.com/somafib"
+                       title="Facebook" target="_blank"><i
+                            class="bi bi-facebook fs-6 text-white"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link icon-link icon-link-hover" href="https://www.instagram.com/ismael.mousaa"
+                       title="Instagram" target="_blank"><i
+                            class="bi bi-instagram fs-6 text-white"></i></a>
+                </li>
+            </ul>
+            <div class="input-group d-flex me-2" id="searchArea">
+                <span class="input-group-text bi bi-search text-primary text-opacity-100 bg-white border-0 rounded-start-4 fs-5"></span>
+                <input class="form-control border-0 rounded-end-4" type="search"
+                       placeholder="Search by title or label or priority..."
+                       aria-label="Search" id="searchInput" autocomplete="off">
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div>
+    <main class="p-5 w-75 d-inline-block ms-2">
+        <div class="row">
+            <div class="col" id="backlogTasks">
+                <div class="mb-2 d-flex align-items-center justify-content-between">
+                    <h5 class="h5 text-dark opacity-75" id="backlogTasksTitle">Backlog 🗃 <span class="fw-lighter fs-6"
+                                                                                               id="backlogTasksCount">(0)</span>
+                    </h5>
+                    <button type="submit" class="btn border border-0 float-end" id="backlogTasksDeletionBtn"
+                            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete Backlog"
+                            data-bs-custom-class="custom-tooltip">
+                        <span class="bi bi-trash text-danger opacity-50 fs-5"></span>
+                    </button>
+                </div>
+                <hr class="border border-danger border-2 opacity-50 mb-4">
+            </div>
+            <div class="col" id="todoTasks">
+                <div class="mb-2 d-flex align-items-center justify-content-between">
+                    <h5 class="h5 text-dark opacity-75" id="todoTasksTitle">To Do 📝 <span class="fw-lighter fs-6"
+                                                                                          id="todoTasksCount">(0)</span>
+                    </h5>
+                    <button type="submit" class="btn border border-0 float-end" id="todoTasksDeletionBtn"
+                            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete To Do"
+                            data-bs-custom-class="custom-tooltip">
+                        <span class="bi bi-trash text-danger opacity-50 fs-5"></span>
+                    </button>
+                </div>
+                <hr class="border border-warning border-2 opacity-50 mb-4">
+            </div>
+            <div class="col" id="inProgressTasks">
+                <div class="mb-2 d-flex align-items-center justify-content-between">
+                    <h5 class="h5 text-dark opacity-75" id="inProgressTasksTitle">In Progress 👨🏻‍💻 <span
+                            class="fw-lighter fs-6" id="inProgressTasksCount">(0)</span></h5>
+                    <button type="submit" class="btn border border-0 float-end" id="inProgressTasksDeletionBtn"
+                            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete In Progress"
+                            data-bs-custom-class="custom-tooltip">
+                        <span class="bi bi-trash text-danger opacity-50 fs-5"></span>
+                    </button>
+                </div>
+                <hr class="border border-primary-subtle border-2 opacity-100 mb-4">
+            </div>
+            <div class="col" id="doneTasks">
+                <div class="mb-2 d-flex align-items-center justify-content-between">
+                    <h5 class="h5 text-dark opacity-75" id="doneTasksTitle">Done ✅ <span class="fw-lighter fs-6"
+                                                                                         id="doneTasksCount">(0)</span>
+                    </h5>
+                    <button type="submit" class="btn border border-0 float-end" id="doneTasksDeletionBtn"
+                            data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete Done"
+                            data-bs-custom-class="custom-tooltip">
+                        <span class="bi bi-trash text-danger opacity-50 fs-5"></span>
+                    </button>
+                </div>
+                <hr class="border border-success border-2 opacity-50 mb-4">
+
+            </div>
+
+        </div>
+    </main>
+    <aside class="float-end shadow-lg rounded-bottom-4 align-top border-0 p-4 d-inline-block">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content border-0">
+                    <div class="modal-header bg-danger opacity-50">
+                        <h1 class="modal-title fs-5 text-white" id="exampleModalLabel">Edit Task 🎨</h1>
+                    </div>
+                    <div class="modal-body">
+                        <hr class="border border-danger border-2 opacity-25 mb-4">
+                        <form id="taskEditForm">
+                            <div class="mb-4 form-floating opacity-75">
+                                <input type="text" required class="form-control border border-0 shadow"
+                                       placeholder="title" id="titleEdit" autocomplete="off">
+                                <label for="titleEdit" class="small fw-light text-dark text-opacity-75">title</label>
+                            </div>
+                            <div class="mb-4 form-floating opacity-75">
+                <textarea class="form-control border border-0 shadow overflow-hidden" placeholder="description"
+                          id="descriptionEdit" autocomplete="off"></textarea>
+                                <label for="descriptionEdit" class="small fw-light text-dark text-opacity-75">description</label>
+                            </div>
+                            <div class="mb-4 form-floating opacity-75">
+                                <input type="text" class="form-control border border-0 shadow" placeholder="label"
+                                       id="labelEdit" autocomplete="off">
+                                <label for="labelEdit" class="small fw-light text-dark text-opacity-75">label</label>
+                            </div>
+                            <div class="form-floating opacity-75">
+                                <select class="mb-4 form-select form-select-sm border border-0 shadow small fw-light text-dark"
+                                        id="statusEdit" aria-label="select">
+                                    <option value="backlog" id="backlogEdit" selected>backlog 🗃</option>
+                                    <option value="todo" id="todoEdit">to do 📝</option>
+                                    <option value="in progress" id="inProgressEdit">in progress 👨🏻‍💻</option>
+                                    <option value="done" id="doneEdit">done ✅</option>
+                                </select>
+                                <label for="statusEdit" class="small fw-light text-dark text-opacity-75">status</label>
+                            </div>
+                            <div class="btn-group btn-group-sm mb-4 gap-3 d-grid gap-2 d-md-flex justify-content-md-center"
+                                 role="group"
+                                 aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" name="priorityEdit" id="lowEdit"
+                                       autocomplete="off"
+                                       value="low">
+                                <label class="btn btn-outline-success border border-0 shadow opacity-75 rounded-5"
+                                       for="lowEdit">low</label>
+
+                                <input type="radio" class="btn-check" name="priorityEdit" id="mediumEdit"
+                                       autocomplete="off"
+                                       value="medium" checked>
+                                <label class="btn btn-outline-primary border border-0 shadow opacity-75 rounded-5"
+                                       for="mediumEdit">medium</label>
+
+                                <input type="radio" class="btn-check" name="priorityEdit" id="highEdit"
+                                       autocomplete="off"
+                                       value="high">
+                                <label class="btn btn-outline-warning border border-0 shadow opacity-75 rounded-5"
+                                       for="highEdit">high</label>
+
+                                <input type="radio" class="btn-check" name="priorityEdit" id="criticalEdit"
+                                       autocomplete="off" value="critical">
+                                <label class="btn btn-outline-danger border border-0 shadow opacity-75 rounded-5"
+                                       for="criticalEdit">critical</label>
+                            </div>
+                            <div class="mb-4 form-floating opacity-75">
+                                <input type="url" class="form-control border border border-0 shadow"
+                                       placeholder="attachment"
+                                       id="attachmentEdit" pattern="https?://.*" autocomplete="off">
+                                <label for="attachmentEdit"
+                                       class="small fw-light text-dark text-opacity-75">attachment</label>
+                            </div>
+                            <div class="mb-5 form-floating opacity-75">
+                                <input type="datetime-local" class="form-control border border-0 shadow small fw-light"
+                                       placeholder="Completed At"
+                                       id="completedAtEdit" required>
+                                <label for="completedAtEdit" class="small fw-light text-dark text-opacity-75">Completed
+                                    at</label>
+                            </div>
+                            <hr class="border border-danger border-2 opacity-25 mb-4">
+                            <button type="submit"
+                                    class="btn btn-outline-success opacity-75 border-0 shadow fw-medium float-start rounded-4"
+                                    data-bs-dismiss="modal">
+                                Save <span class="bi bi-check2-circle fw-bold"></span>
+                            </button>
+                            <button type="button"
+                                    class="btn btn-outline-danger opacity-75 border-0 shadow fw-medium float-end rounded-4"
+                                    id="modalCloseBtn" data-bs-dismiss="modal">
+                                Cancel
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="taskAlert"></div>
+        <div class="d-flex flex-row justify-content-between">
+            <h1 class="fs-5 mt-1 text-dark text-opacity-75">New Task ✍🏻</h1>
+            <button class="btn btn-primary rounded-4 opacity-50 border-0 shadow fw-medium" type="button"
+                    data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"
+                    id="askAiBtn">
+                Ask AI <span class="bi bi-stars"></span>
+            </button>
+        </div>
+        <div class="offcanvas offcanvas-start w-25 border-0" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1"
+             id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header bg-primary opacity-50">
+                <h1 class="offcanvas-title text-white fs-5" id="offcanvasExampleLabel">AI Assistant <span
+                        class="bi bi-stars"></span></h1>
+                <button type="button" class="btn text-white small bg-transparent border-0"
+                        data-bs-dismiss="offcanvas"
+                        aria-label="Close"><span class="bi bi-x fs-4 text-white"></span></button>
+            </div>
+            <div class="offcanvas-body overflow-x-hidden">
+                <form class="md-4 mt-4" id="ai-form">
+                    <div class="form-floating opacity-75 mb-4">
+                        <input type="text" required class="form-control border border-0 shadow-lg"
+                               placeholder="Message AI"
+                               id="ai-question" autocomplete="off">
+                        <label for="ai-question" class="small fw-light text-dark text-opacity-75">ask me <span
+                                class="bi bi-stars"></span></label>
+                    </div>
+                    <hr class="border border-primary border-2 opacity-25 mb-4">
+                    <div class="mb-4 form-floating opacity-75">
+                        <textarea class="form-control border border-0 shadow-lg" placeholder="AI Answer"
+                                  id="ai-answer" disabled></textarea>
+                        <label for="ai-answer" class="small fw-light text-dark text-opacity-75"><span
+                                class="bi bi-stars text-dark text-opacity-75"></span></label>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <hr class="border border-primary border-2 opacity-25 mb-4">
+        <form id="taskCreateForm">
+            <div class="mb-4 form-floating opacity-75">
+                <input type="text" required class="form-control border border-0 shadow" placeholder="title"
+                       id="titleCreate" autocomplete="off" maxlength="16">
+                <label for="titleCreate" class="small fw-light text-dark text-opacity-75">title</label>
+            </div>
+            <div class="mb-4 form-floating opacity-75">
+                <textarea class="form-control border border-0 shadow overflow-hidden" placeholder="description"
+                          id="descriptionCreate" autocomplete="off"></textarea>
+                <label for="descriptionCreate" class="small fw-light text-dark text-opacity-75 bg-transparent">description</label>
+            </div>
+            <div class="mb-4 form-floating opacity-75">
+                <input type="text" class="form-control border border-0 shadow" placeholder="label" id="labelCreate"
+                       autocomplete="off">
+                <label for="labelCreate" class="small fw-light text-dark text-opacity-75">label</label>
+            </div>
+            <div class="form-floating opacity-75">
+                <select class="mb-4 form-select form-select-sm border border-0 shadow small fw-light text-dark"
+                        id="statusCreate" aria-label="select">
+                    <option value="backlog" id="backlogCreate" selected>backlog 🗃</option>
+                    <option value="todo" id="todoCreate">to do 📝</option>
+                    <option value="in progress" id="inProgressCreate">in progress 👨🏻‍💻</option>
+                    <option value="done" id="doneCreate">done ✅</option>
+                </select>
+                <label for="statusCreate" class="small fw-light text-dark text-opacity-75">status</label>
+            </div>
+            <div class="btn-group btn-group-sm mb-4 gap-3 d-grid gap-2 d-md-flex justify-content-md-center" role="group"
+                 aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check" name="priorityCreate" id="lowCreate" autocomplete="off"
+                       value="low">
+                <label class="btn btn-outline-success border border-0 shadow opacity-75 rounded-5"
+                       for="lowCreate">low</label>
+
+                <input type="radio" class="btn-check" name="priorityCreate" id="mediumCreate" autocomplete="off"
+                       value="medium" checked>
+                <label class="btn btn-outline-primary border border-0 shadow opacity-75 rounded-5"
+                       for="mediumCreate">medium</label>
+
+                <input type="radio" class="btn-check" name="priorityCreate" id="highCreate" autocomplete="off"
+                       value="high">
+                <label class="btn btn-outline-warning border border-0 shadow opacity-75 rounded-5"
+                       for="highCreate">high</label>
+
+                <input type="radio" class="btn-check" name="priorityCreate" id="criticalCreate" autocomplete="off"
+                       value="critical">
+                <label class="btn btn-outline-danger border border-0 shadow opacity-75 rounded-5"
+                       for="criticalCreate">critical</label>
+            </div>
+            <div class="mb-4 form-floating opacity-75">
+                <input type="url" class="form-control border border border-0 shadow" placeholder="attachment"
+                       id="attachmentCreate" pattern="https?://.*" autocomplete="off">
+                <label for="attachmentCreate" class="small fw-light text-dark text-opacity-75">attachment</label>
+            </div>
+            <div class="mb-5 form-floating opacity-75">
+                <input type="datetime-local" class="form-control border border-0 shadow small fw-light"
+                       placeholder="Completed At"
+                       id="completedAtCreate" required>
+                <label for="completedAtCreate" class="small fw-light text-dark text-opacity-75">Completed at</label>
+            </div>
+            <hr class="border border-primary border-2 opacity-25 mb-4">
+            <button type="submit"
+                    class="btn btn-outline-primary opacity-75 border-0 shadow fw-medium float-start rounded-4"
+                    id="taskCreationBtn">
+                New<span class="bi bi-plus-lg"></span>
+            </button>
+            <button type="reset" class="btn btn-outline-danger opacity-75 border-0 shadow fw-medium float-end rounded-4"
+                    id="resetBtn">
+                Clear
+            </button>
+        </form>
+    </aside>
+</div>
+<script src="index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+</html>

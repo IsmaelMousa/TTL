@@ -1,10 +1,7 @@
 from typing import Optional
-from datetime import datetime
 from unittest import TestCase
 
-from pydantic import HttpUrl
-
-from schemas.task import Priority, Status, TaskBase, TaskRead
+from schemas.task import Priority, Status, TaskRequest, TaskResponse
 
 
 class TestTaskSchema(TestCase):
@@ -18,21 +15,18 @@ class TestTaskSchema(TestCase):
 
         :return: None
         """
-        self.fake_priorities = [1, 2, 3, 4]
-        self.fake_statuses = ["todo", "in progress", "completed", "cancelled"]
+        self.fake_priorities = ["low", "medium", "high", "critical"]
+        self.fake_statuses = ["backlog", "todo", "in progress", "done"]
         self.fake_task_base_fields_dtypes = {"title": str,
                                              "description": Optional[str],
                                              "label": Optional[str],
                                              "priority": Priority,
                                              "status": Status,
-                                             "completed_at": datetime,
-                                             "attachment_url": Optional[HttpUrl],
-                                             "attachment_file_content": Optional[bytes],
-                                             "attachment_file_name": Optional[str],
-                                             "attachment_title": Optional[str]}
+                                             "completed_at": str,
+                                             "attachment": Optional[str]}
         self.fake_task_read_fields_dtypes = {"id": int,
-                                             "created_at": datetime,
-                                             "last_update": datetime}
+                                             "created_at": str,
+                                             "last_update": str}
 
     def test_priority_enum_values(self) -> None:
         """
@@ -62,28 +56,28 @@ class TestTaskSchema(TestCase):
                              second=fake_status,
                              msg=f"status: {status} must be: {fake_status}")
 
-    def test_task_base_dtypes(self) -> None:
+    def test_task_request_dtypes(self) -> None:
         """
         Testing if the TaskBase model's fields matches the expected data types.
 
         :return: None
         """
         fake_dtypes = self.fake_task_base_fields_dtypes
-        dtypes = TaskBase.__annotations__
+        dtypes = TaskRequest.__annotations__
 
         for fake_dtype, dtype in zip(fake_dtypes, dtypes):
             self.assertEqual(first=dtypes[dtype],
                              second=fake_dtypes[fake_dtype],
                              msg=f"dtype of: '{dtype}' must be: {fake_dtypes[fake_dtype]}")
 
-    def test_task_read_dtypes(self) -> None:
+    def test_task_response_dtypes(self) -> None:
         """
         Testing if the TaskRead model's fields matches the expected data types.
 
         :return: None
         """
         fake_dtypes = self.fake_task_read_fields_dtypes
-        dtypes = TaskRead.__annotations__
+        dtypes = TaskResponse.__annotations__
 
         for fake_dtype, dtype in zip(fake_dtypes, dtypes):
             self.assertEqual(first=dtypes[dtype],

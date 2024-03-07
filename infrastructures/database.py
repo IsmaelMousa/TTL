@@ -1,11 +1,11 @@
-import sys
 from dataclasses import dataclass
 
 from sqlalchemy.engine import Engine, create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 from sqlalchemy.exc import NoSuchModuleError, ArgumentError
 
-from utils import get_config, get_logger
+from errors import UnhandledError, DataBaseConnectionError
+from utils import get_config
 
 
 @dataclass(frozen=True)
@@ -26,8 +26,6 @@ def get_database_stuff() -> DataBaseStuff:
     """
 
     database_cfg = get_config().database
-    level = database_cfg.log_level
-    logger = get_logger(level=level)
 
     try:
         database_url = "{}://{}:{}@{}:{}/{}".format(database_cfg.driver_name,
@@ -45,25 +43,11 @@ def get_database_stuff() -> DataBaseStuff:
 
         return database_stuff
 
-    except NoSuchModuleError as exc:  # pragma: no cover
-        logger.error(exc)
-        sys.exit(1)
-
-    except ArgumentError as exc:  # pragma: no cover
-        logger.error(exc)
-        sys.exit(1)
-
-    except ValueError as exc:  # pragma: no cover
-        logger.error(exc)
-        sys.exit(1)
-
-    except KeyError as exc:  # pragma: no cover
-        logger.error(f"Invalid key: {exc}")
-        sys.exit(1)
+    except (NoSuchModuleError, ArgumentError, ValueError, KeyError) as exc:  # pragma: no cover
+        raise DataBaseConnectionError(exc) from None
 
     except Exception as exc:  # pragma: no cover
-        logger.error(f"Unhandled Exception: {exc}")
-        sys.exit(1)
+        raise UnhandledError(exc) from None
 
 
 Base = declarative_base()

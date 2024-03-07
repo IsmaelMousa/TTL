@@ -1,6 +1,37 @@
+from json import dumps
+from datetime import datetime
 from logging import Logger, getLogger, StreamHandler, Formatter
 
-from errors import LogLevelError
+from errors import LogLevelError, UnhandledError
+
+
+class JSONFormatter(Formatter):
+    """
+    A custom json formatter for the logging messages.
+    """
+
+    def formatTime(self, record, datefmt="%Y-%m-%d %H:%M:%S") -> datetime.date:
+        """
+        Override formatTime to use the specified datetime format.
+
+        :param record: the record to format
+        :param datefmt: the specified datetime format
+        :return: the formatted datetime
+        """
+        fmt_datetime = datetime.fromtimestamp(record.created).strftime(datefmt)
+
+        return fmt_datetime
+
+    def format(self, record) -> str:
+        """
+        override format to use the specified logging format.
+        """
+        custom_fmt = {"time": self.formatTime(record=record),
+                      "level": record.levelname,
+                      "pathname": record.pathname,
+                      "message": record.getMessage()}
+
+        return dumps(obj=custom_fmt)
 
 
 def get_logger(level: str) -> Logger:
@@ -10,19 +41,10 @@ def get_logger(level: str) -> Logger:
     :param level: logging level
     :return: Logger for the specified level
     """
-
-    custom_fmt = ('{"datetime": "%(asctime)s",'
-                  ' "level": "%(levelname)s",'
-                  ' "pathname": "%(pathname)s",'
-                  ' "funcName": "%(funcName)s",'
-                  ' "message": "%(message)s"}')
-
-    custom_date_fmt = "%Y-%m-%d %H:%M:%S"
-
     try:
         logger = getLogger(name=__name__)
         handler = StreamHandler()
-        formatter = Formatter(fmt=custom_fmt, datefmt=custom_date_fmt)
+        formatter = JSONFormatter()
 
         handler.setFormatter(fmt=formatter)
         logger.setLevel(level=level.upper())
@@ -34,4 +56,4 @@ def get_logger(level: str) -> Logger:
         raise LogLevelError(f"Invalid logging level: {level}") from None
 
     except Exception as exc:  # pragma: no cover
-        raise exc
+        raise UnhandledError(exc) from None

@@ -1,14 +1,14 @@
 app:
-  name: "TTL"
+  host: "localhost"
   port: 8000
+  path: "ttl"
   version: "1.1.0"
   logLevel: "ERROR"
 
 database:
-  name: "TODO"
   driverName: "postgresql"
   username: "postgres"
   password: "test"
   host: "localhost"
   port: 5432
-  logLevel: "ERROR"
+  name: "TODO"

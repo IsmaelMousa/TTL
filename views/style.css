@@ -1,0 +1,73 @@
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+.fw-lighter, p {
+    font-size: 13px;
+}
+
+.offcanvas-start, body, .modal-content {
+    background-color: #ebf0f7;
+}
+
+.offcanvas-header {
+    height: 52px;
+}
+
+#descriptionCreate, #descriptionEdit {
+    height: 150px;
+}
+
+#ai-answer {
+    height: 500px;
+}
+
+
+aside {
+    width: 24%;
+}
+
+.custom-tooltip {
+    --bs-tooltip-opacity: .75;
+    --bs-tooltip-bg: var(--bs-danger);
+}
+
+#askAiBtn:hover {
+    opacity: .75;
+    color: var(--bs-primary);
+    background-color: var(--bs-white);
+    transform: scale(1.05);
+
+}
+
+.btn-outline-warning {
+    color: var(--bs-warning);
+}
+
+.btn-check:checked + .btn-outline-warning {
+    color: white;
+}
+
+#searchArea {
+    width: 20%;
+}
+
+#searchInput:hover {
+    transform: scale(1);
+}
+
+.task:hover,
+.btn:hover {
+    transform: scale(1.05);
+}
+
+input:hover,
+select:hover,
+#descriptionCreate:hover,
+#descriptionEdit:hover {
+    transform: scale(1.01);
+}
+
+.taskAttachment:hover {
+    transform: rotate(45deg);
+}
