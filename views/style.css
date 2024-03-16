@@ -15,7 +15,11 @@
 }
 
 #descriptionCreate, #descriptionEdit {
-    height: 150px;
+    height: 130px;
+}
+
+#ai-question {
+    height: 80px;
 }
 
 #ai-answer {
@@ -56,8 +60,13 @@ aside {
     transform: scale(1);
 }
 
+#searchInput::placeholder {
+    font-size: 15px;
+}
+
 .task:hover,
-.btn:hover {
+.btn:hover,
+.badge:hover {
     transform: scale(1.05);
 }
 

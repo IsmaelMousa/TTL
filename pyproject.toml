@@ -14,6 +14,9 @@ pyyaml = "^6.0.1"
 sqlalchemy = "^2.0.25"
 psycopg2-binary = "^2.9.9"
 httpx = "^0.26.0"
+transformers = "^4.38.2"
+torch = "^2.2.1"
+tensorflow = "^2.16.1"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -36,7 +39,7 @@ norecursedirs = "__init__.py"
 
 [tool.coverage.run]
 source = ["."]
-omit = ["main.py", "*/__init__.py", "tests/*", ".venv/*", "routers/task.py"]
+omit = ["main.py", "*/__init__.py", "tests/*", ".venv/*"]
 
 
 [tool.pylint]

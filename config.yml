@@ -12,3 +12,8 @@ database:
   host: "localhost"
   port: 5432
   name: "TODO"
+
+chatModel:
+  task: "text-generation"
+  name: "GPT2"
+  checkpoint: "openai-community/gpt2"

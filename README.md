@@ -1,11 +1,13 @@
-# TTL (Todo Task List) <a href="#" target="_blank"><img src="./views/images/website-icon.png" alt="CSS" title="CSS" height="20"></a>
+# TTL (Todo Task List) <a href="#" target="_blank"><img src="./views/images/website-icon.png" alt="TTL" title="TTL" height="20"></a>
 
-What's your plan today? 🤔
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Helvetica&weight=600&size=15&pause=1000&color=F7F7F7&random=false&width=435&lines=What's+your+plan+today%3F+%F0%9F%A4%94)](https://git.io/typing-svg)
 
 ![CI](https://img.shields.io/github/actions/workflow/status/IsmaelMousa/todo-task-list/ci.yml?style=flat-square&logo=github&label=CI)
 ![coverage](https://img.shields.io/codecov/c/github/IsmaelMousa/todo-task-list?style=flat-square)
 
-<img src=".github/website.png" alt="example" title="example">
+## Demo 👀
+
+![Demo](.github/demo.gif)
 
 ## Overview
 
@@ -22,8 +24,6 @@ juggling multiple projects, planning your day, or prioritizing your tasks, our u
 assistant are here to support you every step of the way. Let us help you stay organized, focused, and empowered to
 manage all your tasks with ease. Welcome aboard **TTL** 🤗!
 
-**Note**: When using the project, you will directly write your task; there is no Sign in/up yet 🫣.
-
 ## Goal
 
 The primary aim of **TTL** 🪄 is to enhance my technical and development skills by applying the technologies and tools
@@ -37,15 +37,33 @@ Technologies & Tools 🚀 used in **TTL**:
 
 <br/>
 <a href="https://www.python.org" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/800px-Python-logo-notext.svg.png" alt="Python 3.10" title="Python 3.10" height="50"></a>
+<a href="https://huggingface.co/docs/transformers/en/index" target="_blank"><img src="https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.png" alt="HF Transformers" title="Transformers" height="50"></a>
 <a href="https://fastapi.tiangolo.com" target="_blank"><img src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png" alt="FastAPI" title="FastAPI" height="50"></a>
 <a href="https://www.postgresql.org" target="_blank"><img src="https://cdn.icon-icons.com/icons2/2415/PNG/512/postgresql_plain_wordmark_logo_icon_146390.png" alt="PostgreSQL" title="PostgreSQL" height="50"></a>
+<a href="https://docs.sqlalchemy.org/en/20/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/SQLAlchemy.svg/800px-SQLAlchemy.svg.png" alt="SQLAlchemy" title="SQLAlchemy" height="50"></a>
 <a href="https://www.docker.com" target="_blank"><img src="https://logos-world.net/wp-content/uploads/2021/02/Docker-Symbol.png" alt="Docker" title="Docker" height="50"></a>
 <a href="https://python-poetry.org" target="_blank"><img src="https://avatars.githubusercontent.com/u/48722593?s=200&v=4" alt="Poetry" title="Poetry" height="50"></a>
-<a href="https://docs.pytest.org/en/8.0.x/contents.html" target="_blank"><img src="https://545767148-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MdBdUMSCcMYTyNwZf80%2Fuploads%2Fgit-blob-f08a97a4a9cff017c204a21b66514ee07045dba8%2Fpytest.png?alt=media" alt="Pytest" title="Pytest" height="50"></a>
 <a href="https://getbootstrap.com/docs/5.3/getting-started/introduction" target="_blank"><img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Bootstrap 5.3" title="Bootstrap 5.3" height="50"></a>
 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank"><img src="https://www.w3.org/html/logo/downloads/HTML5_Badge_512.png" alt="HTML" title="HTML" height="50"></a>
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="https://www.vhv.rs/dpng/f/456-4562295_library-of-javascript-icon-graphic-freeuse-png-files.png" alt="JavaScript" title="JavaScript" height="50"></a>
 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/CSS3_logo.svg/2048px-CSS3_logo.svg.png" alt="CSS" title="CSS" height="50"></a>
+
+## Prerequisites
+
+- **Python 3.10** [download](https://www.python.org/downloads/)
+- **PostgreSQL** [download](https://www.python.org/downloads/)
+
+> [!NOTE]
+>
+> You need also to set up the database, where:
+> - DB Name: **TODO**
+> - DB Username: **postgres**
+> - DB Password: **test**
+> - DB Host: **localhost**
+> - DB Port: **5432**
+>
+> I **recommend** using [pgAdmin4](https://www.pgadmin.org/download/) to facilitate the setup process and also monitor
+> changes.
 
 ## Installation
 
@@ -90,13 +108,16 @@ todo-task-list
  ├── .github
  │   ├── workflows
  │   │   └── ci.yml
- │   └── website.png
+ │   └── demo.gif
  ├── .venv 
  │   ├── bin
  │   ├── include
  │   ├── lib
  │   ├── .gitignore
  │   └── pyvenv.cfg
+ ├── assistants 
+ │   ├── __init__.py
+ │   └── chat.py
  ├── dependencies 
  │   ├── __init__.py
  │   └── util.py
@@ -114,17 +135,22 @@ todo-task-list
  │   └── task.py
  ├── routers
  │   ├── __init__.py
+ │   ├── assistant.py
  │   └── task.py
  ├── schemas
  │   ├── __init__.py
+ │   ├── assistant.py
  │   └── task.py 
  ├── tests
  │   ├── __init__.py
+ │   ├── assistants_chat.py
  │   ├── dependencies_util.py
  │   ├── infrastructures_crud_task.py
  │   ├── infrastructures_database.py
  │   ├── models_task.py
+ │   ├── routers_assistant.py
  │   ├── routers_task.py
+ │   ├── schemas_assistant.py
  │   ├── schemas_task.py
  │   ├── utils_config.py
  │   └── utils_logger.py    
@@ -163,6 +189,7 @@ Here is a summary 📝 for the purpose of each major module or component in **TT
 |     `errors`      | Prepares and customizes exceptions for handling specific issues.                                         |
 |      `tests`      | Handles the preparation and execution of unit tests.                                                     |
 |  `dependencies`   | Manages and creates dependencies utilized for various operations within the application.                 |
+|   `assistants`    | Contains the hugging face transformers models, for the specific NLP tasks.                               |
 |      `views`      | Represents the user interface (UI) files, or can say front-end side.                                     |
 
 ## Usage

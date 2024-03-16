@@ -35,16 +35,28 @@ class DataBaseConfig:
 
 
 @dataclass(frozen=True)
+class ChatModelConfig:
+    """
+    Represents the interface of the chat model's configuration.
+    """
+    task: str
+    name: str
+    checkpoint: str
+
+
+@dataclass(frozen=True)
 class Config:
     """
     Represents the interface of the base configurations.
 
     - app: Application's configuration.
     - databases: Database's configuration.
+    - models: ChatModel's configuration.
     """
 
     app: AppConfig
     database: DataBaseConfig
+    chat_model: ChatModelConfig
 
 
 @lru_cache(maxsize=1)
@@ -64,6 +76,7 @@ def get_config() -> Config:
 
             app_cfg: dict = configurations.get("app", {})
             database_cfg: dict = configurations.get("database", {})
+            chat_model_cfg: dict = configurations.get("chatModel", {})
 
             app = AppConfig(host=app_cfg.get("host"),
                             port=app_cfg.get("port"),
@@ -78,9 +91,14 @@ def get_config() -> Config:
                                       port=database_cfg.get("port"),
                                       name=database_cfg.get("name"))
 
-            config = Config(app=app, database=database)
+            chat_model = ChatModelConfig(task=chat_model_cfg.get("task"),
+                                         name=chat_model_cfg.get("name"),
+                                         checkpoint=chat_model_cfg.get("checkpoint"))
+
+            config = Config(app=app, database=database, chat_model=chat_model)
 
         return config
+
     except IOError:  # pragma: no cover
         raise IOError(f"Unable to open the config file with path {path}")
 

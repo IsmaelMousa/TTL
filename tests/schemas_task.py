@@ -17,16 +17,16 @@ class TestTaskSchema(TestCase):
         """
         self.fake_priorities = ["low", "medium", "high", "critical"]
         self.fake_statuses = ["backlog", "todo", "in progress", "done"]
-        self.fake_task_base_fields_dtypes = {"title": str,
-                                             "description": Optional[str],
-                                             "label": Optional[str],
-                                             "priority": Priority,
-                                             "status": Status,
-                                             "completed_at": str,
-                                             "attachment": Optional[str]}
-        self.fake_task_read_fields_dtypes = {"id": int,
-                                             "created_at": str,
-                                             "last_update": str}
+        self.fake_task_request_fields_dtypes = {"title": str,
+                                                "description": Optional[str],
+                                                "label": Optional[str],
+                                                "priority": Priority,
+                                                "status": Status,
+                                                "completed_at": str,
+                                                "attachment": Optional[str]}
+        self.fake_task_response_fields_dtypes = {"id": int,
+                                                 "created_at": str,
+                                                 "last_update": str}
 
     def test_priority_enum_values(self) -> None:
         """
@@ -58,11 +58,11 @@ class TestTaskSchema(TestCase):
 
     def test_task_request_dtypes(self) -> None:
         """
-        Testing if the TaskBase model's fields matches the expected data types.
+        Testing if the TaskRequest model's fields matches the expected data types.
 
         :return: None
         """
-        fake_dtypes = self.fake_task_base_fields_dtypes
+        fake_dtypes = self.fake_task_request_fields_dtypes
         dtypes = TaskRequest.__annotations__
 
         for fake_dtype, dtype in zip(fake_dtypes, dtypes):
@@ -72,11 +72,11 @@ class TestTaskSchema(TestCase):
 
     def test_task_response_dtypes(self) -> None:
         """
-        Testing if the TaskRead model's fields matches the expected data types.
+        Testing if the TaskResponse model's fields matches the expected data types.
 
         :return: None
         """
-        fake_dtypes = self.fake_task_read_fields_dtypes
+        fake_dtypes = self.fake_task_response_fields_dtypes
         dtypes = TaskResponse.__annotations__
 
         for fake_dtype, dtype in zip(fake_dtypes, dtypes):
