@@ -27,8 +27,10 @@ const priorityBadges = {
 
 const currentDate = new Date();
 const oneWeekLater = new Date(currentDate.getTime() + 7 * 24 * 60 * 60 * 1000);
+oneWeekLater.setHours(12, 0, 0, 0);
 const formattedDate = oneWeekLater.toISOString().slice(0, 16).replace("T", " ");
 document.getElementById("completedAtCreate").value = formattedDate;
+
 
 const alertPlaceholder = document.getElementById("taskAlert")
 
@@ -262,13 +264,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const askAIInput = document.getElementById("ai-question");
     const answerAIInput = document.getElementById("ai-answer");
 
-    askAIInput.addEventListener("keydown", function (event) {
+    askAIInput.addEventListener("keydown", async function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
             const question = askAIInput.value;
-            showAIResponse(getAIResponse(question));
+            answerAIInput.value = "";
+            showLoadingIcon();
+            try {
+                const response = await fetch("http://localhost:8000/manager/assistants/GPT2?question=" + encodeURIComponent(question));
+                const data = await response.json();
+                showAIResponse(data.answer);
+            } catch (error) {
+                showAIResponse("An error occurred while fetching the response. Please try again later.");
+            } finally {
+                hideLoadingIcon();
+            }
         }
     });
+
+    function showLoadingIcon() {
+        answerAIInput.value = "Loading...";
+    }
+
+    function hideLoadingIcon() {
+        answerAIInput.value = "";
+    }
 
     function showAIResponse(response) {
         let index = 0;
@@ -282,12 +302,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 createCopyButton();
             }
         }, 20);
-    }
-
-    function getAIResponse(question) {
-        return "As an AI model, I apologize, but it appears the question you've asked doesn't seem to be valid or understandable." +
-            " Could you please try rephrasing your query or providing more context?" +
-            " This will help me provide you with a more accurate and helpful response. Your query: " + question;
     }
 
     function createResetButton() {
@@ -341,6 +355,7 @@ document.addEventListener("DOMContentLoaded", () => {
         form.appendChild(copyButton);
     }
 
+
 // AI Assistant -> END
 });
 
@@ -352,6 +367,7 @@ async function CreateNewTask(url, data) {
         body: JSON.stringify(data)
     });
     updateTaskCountsFromBackend();
+    location.reload()
     return response.json();
 }
 
@@ -362,6 +378,7 @@ async function UpdateTask(url, data) {
         body: JSON.stringify(data)
     });
     updateTaskCountsFromBackend();
+    location.reload()
     return response.json();
 }
 
@@ -388,15 +405,17 @@ async function DeleteTaskById(url) {
 fetch("http://localhost:8000/manager/tasks/all", {method: "GET"})
     .then((response) => response.json())
     .then((tasks) => {
+        let badgeIndex = 0;
+
         for (const task of tasks) {
             const priorityBadge = priorityBadges[task.priority.toLowerCase()];
-            let labelBadge;
+
             if (!labelBadgeMap[task.label]) {
-                labelBadge = labels_badges[Math.floor(Math.random() * labels_badges.length)];
-                labelBadgeMap[task.label] = labelBadge;
-            } else {
-                labelBadge = labelBadgeMap[task.label];
+                labelBadgeMap[task.label] = labels_badges[badgeIndex];
+                badgeIndex = (badgeIndex + 1) % labels_badges.length;
             }
+
+            const labelBadge = labelBadgeMap[task.label];
 
             const attachmentHTML = task.attachment ? `<a class="btn border border-0 taskAttachment" href="${task.attachment}" target="_blank"><span class="bi bi-paperclip text-dark opacity-50 fs-6"></span></a>` : '';
 
@@ -468,7 +487,7 @@ fetch("http://localhost:8000/manager/tasks/all", {method: "GET"})
                 let attachment = this.parentNode.querySelector(".taskAttachment") ? this.parentNode.querySelector(".taskAttachment").href : '';
                 let completed_at = this.parentNode.querySelector(".taskCompletedAt").textContent;
                 let priority = this.parentNode.querySelector(".taskPriority").textContent.toLowerCase();
-                let status = '';
+                let status = "";
 
                 switch (this.parentNode.parentNode.id) {
                     case "backlogTasks":
