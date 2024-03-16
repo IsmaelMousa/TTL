@@ -1,5 +1,5 @@
 from unittest import TestCase
-from utils.config import get_config, Config, AppConfig, DataBaseConfig
+from utils.config import get_config, Config, AppConfig, DataBaseConfig, ChatModelConfig
 
 
 class TestConfig(TestCase):
@@ -24,7 +24,13 @@ class TestConfig(TestCase):
                                            host="localhost",
                                            port=5432,
                                            name="TODO")
-        self.cfg = Config(app=self.app_cfg, database=self.database_cfg)
+        self.chat_model_cfg = ChatModelConfig(task="text-generation",
+                                              name="GPT2",
+                                              checkpoint="openai-community/gpt2")
+
+        self.cfg = Config(app=self.app_cfg,
+                          database=self.database_cfg,
+                          chat_model=self.chat_model_cfg)
 
     def test_get_config(self) -> None:
         """
@@ -43,6 +49,10 @@ class TestConfig(TestCase):
         self.assertIsInstance(obj=self.database_cfg,
                               cls=DataBaseConfig,
                               msg="database_cfg must be an instance of DataBaseConfig")
+
+        self.assertIsInstance(obj=self.chat_model_cfg,
+                              cls=ChatModelConfig,
+                              msg="chat_model_cfg must be an instance of ChatModelConfig")
 
         self.assertEqual(first=self.cfg,
                          second=get_config(),
