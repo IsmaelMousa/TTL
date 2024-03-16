@@ -36,18 +36,17 @@ through all development stages 🎖️.
 Technologies & Tools 🚀 used in **TTL**:
 
 <br/>
-<a href="https://www.python.org" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/800px-Python-logo-notext.svg.png" alt="Python 3.10" title="Python 3.10" height="45"></a>
-<a href="https://huggingface.co/docs/transformers/en/index" target="_blank"><img src="https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.png" alt="HF Transformers" title="Transformers" height="45"></a>
-<a href="https://fastapi.tiangolo.com" target="_blank"><img src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png" alt="FastAPI" title="FastAPI" height="45"></a>
-<a href="https://www.postgresql.org" target="_blank"><img src="https://cdn.icon-icons.com/icons2/2415/PNG/512/postgresql_plain_wordmark_logo_icon_146390.png" alt="PostgreSQL" title="PostgreSQL" height="45"></a>
-<a href="https://docs.sqlalchemy.org/en/20/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/SQLAlchemy.svg/800px-SQLAlchemy.svg.png" alt="SQLAlchemy" title="SQLAlchemy" height="45"></a>
-<a href="https://www.docker.com" target="_blank"><img src="https://logos-world.net/wp-content/uploads/2021/02/Docker-Symbol.png" alt="Docker" title="Docker" height="45"></a>
-<a href="https://python-poetry.org" target="_blank"><img src="https://avatars.githubusercontent.com/u/48722593?s=200&v=4" alt="Poetry" title="Poetry" height="45"></a>
-<a href="https://docs.pytest.org/en/8.0.x/contents.html" target="_blank"><img src="https://545767148-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MdBdUMSCcMYTyNwZf80%2Fuploads%2Fgit-blob-f08a97a4a9cff017c204a21b66514ee07045dba8%2Fpytest.png?alt=media" alt="Pytest" title="Pytest" height="45"></a>
-<a href="https://getbootstrap.com/docs/5.3/getting-started/introduction" target="_blank"><img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Bootstrap 5.3" title="Bootstrap 5.3" height="45"></a>
-<a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank"><img src="https://www.w3.org/html/logo/downloads/HTML5_Badge_512.png" alt="HTML" title="HTML" height="45"></a>
-<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="https://www.vhv.rs/dpng/f/456-4562295_library-of-javascript-icon-graphic-freeuse-png-files.png" alt="JavaScript" title="JavaScript" height="45"></a>
-<a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/CSS3_logo.svg/2048px-CSS3_logo.svg.png" alt="CSS" title="CSS" height="45"></a>
+<a href="https://www.python.org" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/800px-Python-logo-notext.svg.png" alt="Python 3.10" title="Python 3.10" height="50"></a>
+<a href="https://huggingface.co/docs/transformers/en/index" target="_blank"><img src="https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.png" alt="HF Transformers" title="Transformers" height="50"></a>
+<a href="https://fastapi.tiangolo.com" target="_blank"><img src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png" alt="FastAPI" title="FastAPI" height="50"></a>
+<a href="https://www.postgresql.org" target="_blank"><img src="https://cdn.icon-icons.com/icons2/2415/PNG/512/postgresql_plain_wordmark_logo_icon_146390.png" alt="PostgreSQL" title="PostgreSQL" height="50"></a>
+<a href="https://docs.sqlalchemy.org/en/20/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/SQLAlchemy.svg/800px-SQLAlchemy.svg.png" alt="SQLAlchemy" title="SQLAlchemy" height="50"></a>
+<a href="https://www.docker.com" target="_blank"><img src="https://logos-world.net/wp-content/uploads/2021/02/Docker-Symbol.png" alt="Docker" title="Docker" height="50"></a>
+<a href="https://python-poetry.org" target="_blank"><img src="https://avatars.githubusercontent.com/u/48722593?s=200&v=4" alt="Poetry" title="Poetry" height="50"></a>
+<a href="https://getbootstrap.com/docs/5.3/getting-started/introduction" target="_blank"><img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Bootstrap 5.3" title="Bootstrap 5.3" height="50"></a>
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank"><img src="https://www.w3.org/html/logo/downloads/HTML5_Badge_512.png" alt="HTML" title="HTML" height="50"></a>
+<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="https://www.vhv.rs/dpng/f/456-4562295_library-of-javascript-icon-graphic-freeuse-png-files.png" alt="JavaScript" title="JavaScript" height="50"></a>
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/CSS3_logo.svg/2048px-CSS3_logo.svg.png" alt="CSS" title="CSS" height="50"></a>
 
 ## Prerequisites
 
