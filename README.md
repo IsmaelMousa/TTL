@@ -41,7 +41,6 @@ Technologies & Tools 🚀 used in **TTL**:
 <a href="https://fastapi.tiangolo.com" target="_blank"><img src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png" alt="FastAPI" title="FastAPI" height="50"></a>
 <a href="https://www.postgresql.org" target="_blank"><img src="https://cdn.icon-icons.com/icons2/2415/PNG/512/postgresql_plain_wordmark_logo_icon_146390.png" alt="PostgreSQL" title="PostgreSQL" height="50"></a>
 <a href="https://docs.sqlalchemy.org/en/20/" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/SQLAlchemy.svg/800px-SQLAlchemy.svg.png" alt="SQLAlchemy" title="SQLAlchemy" height="50"></a>
-<a href="https://www.docker.com" target="_blank"><img src="https://logos-world.net/wp-content/uploads/2021/02/Docker-Symbol.png" alt="Docker" title="Docker" height="50"></a>
 <a href="https://python-poetry.org" target="_blank"><img src="https://avatars.githubusercontent.com/u/48722593?s=200&v=4" alt="Poetry" title="Poetry" height="50"></a>
 <a href="https://getbootstrap.com/docs/5.3/getting-started/introduction" target="_blank"><img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Bootstrap 5.3" title="Bootstrap 5.3" height="50"></a>
 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank"><img src="https://www.w3.org/html/logo/downloads/HTML5_Badge_512.png" alt="HTML" title="HTML" height="50"></a>
@@ -51,7 +50,7 @@ Technologies & Tools 🚀 used in **TTL**:
 ## Prerequisites
 
 - **Python 3.10** [download](https://www.python.org/downloads/)
-- **PostgreSQL** [download](https://www.python.org/downloads/)
+- **PostgreSQL** [download](https://www.postgresql.org/download/)
 
 > [!NOTE]
 >
@@ -203,3 +202,23 @@ make run
 ```
 
 2. Navigate to: [http://localhost:8000/ttl/index.html](http://localhost:8000/ttl/index.html) 😀
+
+> [!TIP]
+>
+> To enhance your user experience, I recommend running the backend and frontend separately where:
+> 1. Start the Server-side using the instructions provided in [Step No.1](#usage).
+> 2. Execute the frontend by opening the [index.html](./views/index.html) file in the browser.
+>
+> This approach ensures optimal performance and usability for both sides of the application.
+
+## Feedback 💌
+
+We value your feedback and suggestions 🤟! If you've used **TTL** or explored its features, we'd love to hear
+from you 🫡. share your thoughts, ideas, or any issues you encountered while using the application 💡.
+
+Feel free to open an issue on GitHub or reach out to us
+via [email](https://mail.google.com/mail/ismaelramzimousa@gmail.com) with your feedback.
+Your feedback helps us improve **TTL**
+and make it even better for our users 🎭.
+
+**Thank You!** 🌹🫵
