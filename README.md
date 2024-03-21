@@ -42,6 +42,8 @@ through all development stages 🎖️.
 Technologies & Tools 🚀 used in **TTL**:
 
 <br/>
+<div align="center">
+
 <a href="https://www.python.org" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/800px-Python-logo-notext.svg.png" alt="Python 3.10" title="Python 3.10" height="50"></a>
 <a href="https://huggingface.co/docs/transformers/en/index" target="_blank"><img src="https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.png" alt="HF Transformers" title="Transformers" height="50"></a>
 <a href="https://fastapi.tiangolo.com" target="_blank"><img src="https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png" alt="FastAPI" title="FastAPI" height="50"></a>
@@ -52,6 +54,8 @@ Technologies & Tools 🚀 used in **TTL**:
 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank"><img src="https://www.w3.org/html/logo/downloads/HTML5_Badge_512.png" alt="HTML" title="HTML" height="50"></a>
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="https://www.vhv.rs/dpng/f/456-4562295_library-of-javascript-icon-graphic-freeuse-png-files.png" alt="JavaScript" title="JavaScript" height="50"></a>
 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/CSS3_logo.svg/2048px-CSS3_logo.svg.png" alt="CSS" title="CSS" height="50"></a>
+
+</div>
 
 ## Prerequisites
 
@@ -67,20 +71,20 @@ Technologies & Tools 🚀 used in **TTL**:
 > - DB Host: **localhost**
 > - DB Port: **5432**
 >
-> I **recommend** using [pgAdmin4](https://www.pgadmin.org/download/) to facilitate the setup process and also monitor
+> I **recommend** using [PgAdmin4](https://www.pgadmin.org/download/) to facilitate the setup process and also monitor
 > changes.
 
 ## Installation
 
 Here are the steps you must follow to install **TTL** correctly 🎯:
 
-1. Clone the project
+1. Clone **TTL**
 
 ```zsh
 git clone https://github.com/IsmaelMousa/TTL.git
 ```
 
-2. Navigate to the project
+2. Navigate to the **TTL** directory
 
 ```zsh
 cd TTL
