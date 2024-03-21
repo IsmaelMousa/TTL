@@ -165,11 +165,13 @@ todo-task-list
  │   └── style.css     
  ├── .gitignore
  ├── config.yml
+ ├── LICENSE.md
  ├── main.py
  ├── Makefile
  ├── poetry.lock
  ├── pyproject.toml
- └── README.md
+ ├── README.md
+ └── SECURITY.md
 ```
 
 <br/>
@@ -210,6 +212,8 @@ make run
 > 2. Execute the frontend by opening the [index.html](./views/index.html) file in the browser.
 >
 > This approach ensures optimal performance and usability for both sides of the application.
+
+<br/>
 
 ## Feedback 💌
 
