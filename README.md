@@ -77,13 +77,13 @@ Here are the steps you must follow to install **TTL** correctly 🎯:
 1. Clone the project
 
 ```zsh
-git clone https://github.com/IsmaelMousa/todo-task-list.git
+git clone https://github.com/IsmaelMousa/TTL.git
 ```
 
 2. Navigate to the project
 
 ```zsh
-cd todo-task-list
+cd TTL
 ```
 
 3. Setup virtual environment
@@ -109,7 +109,7 @@ make install
 After completing the installation steps ✅, the project files should be like this when you open **TTL**:
 
 ```zsh
-todo-task-list
+TTL
  ├── .github
  │   ├── workflows
  │   │   └── ci.yml
