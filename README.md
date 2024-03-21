@@ -1,14 +1,15 @@
 # TTL (Todo Task List) <a href="#" target="_blank"><img src="./views/images/website-icon.png" alt="TTL" title="TTL" height="20"></a>
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Helvetica&weight=600&size=15&pause=1000&color=F7F7F7&random=false&width=435&lines=What's+your+plan+today%3F+%F0%9F%A4%94)](https://git.io/typing-svg)
+[![Subtitle](https://readme-typing-svg.demolab.com?font=Helvetica&weight=600&size=15&pause=1000&color=F7F7F7&random=false&width=435&lines=What's+your+plan+today%3F+%F0%9F%A4%94)](https://github.com/IsmaelMousa/TTL)
 
 <div align="center">
 
 ![CI](https://img.shields.io/github/actions/workflow/status/IsmaelMousa/todo-task-list/ci.yml?logo=github&label=CI)
-![Codecov](https://img.shields.io/codecov/c/github/IsmaelMousa/TTL?logo=codecov&color=purple)
-![GitHub Release](https://img.shields.io/github/v/release/IsmaelMousa/TTL)
-![License](https://img.shields.io/github/license/IsmaelMousa/TTL?label=LICENCE&color=blue)
-![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/IsmaelMousa/TTL/total?label=clone)
+![Codecov](https://img.shields.io/codecov/c/github/IsmaelMousa/TTL?logo=codecov&color=purple&label=Coverage)
+![GitHub Release](https://img.shields.io/github/v/release/IsmaelMousa/TTL?label=Release)
+![GitHub Clones](https://img.shields.io/github/watchers/IsmaelMousa/TTL?style=flat&logo=github&label=Clone&color=green)
+![License](https://img.shields.io/github/license/IsmaelMousa/TTL?logo=github&label=LICENCE&color=blue)
+
 </div>
 
 ## Demo 👀
