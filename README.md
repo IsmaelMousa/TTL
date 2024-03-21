@@ -118,7 +118,8 @@ After completing the installation steps ✅, the project files should be like th
 TTL
  ├── .github
  │   ├── workflows
- │   │   └── ci.yml
+ │   │   ├── ci.yml
+ │   │   └── deployment.yml
  │   └── demo.gif
  ├── .venv 
  │   ├── bin
