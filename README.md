@@ -5,6 +5,7 @@
 <div align="center">
 
 ![CI](https://img.shields.io/github/actions/workflow/status/IsmaelMousa/todo-task-list/ci.yml?logo=github&label=CI)
+![CD](https://img.shields.io/github/actions/workflow/status/IsmaelMousa/TTL/deployment.yml?logo=github&label=CD)
 ![Codecov](https://img.shields.io/codecov/c/github/IsmaelMousa/TTL?logo=codecov&color=purple&label=Coverage)
 ![GitHub Release](https://img.shields.io/github/v/release/IsmaelMousa/TTL?label=Release)
 ![GitHub Clones](https://img.shields.io/github/watchers/IsmaelMousa/TTL?style=flat&logo=github&label=Clone&color=green)
