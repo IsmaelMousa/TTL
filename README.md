@@ -6,10 +6,10 @@
 
 ![CI](https://img.shields.io/github/actions/workflow/status/IsmaelMousa/todo-task-list/ci.yml?logo=github&label=CI)
 ![CD](https://img.shields.io/github/actions/workflow/status/IsmaelMousa/TTL/deployment.yml?logo=github&label=CD)
-![Codecov](https://img.shields.io/codecov/c/github/IsmaelMousa/TTL?logo=codecov&color=purple&label=Coverage)
-![GitHub Release](https://img.shields.io/github/v/release/IsmaelMousa/TTL?label=Release)
-![GitHub Clones](https://img.shields.io/github/watchers/IsmaelMousa/TTL?style=flat&logo=github&label=Clone&color=green)
-![License](https://img.shields.io/github/license/IsmaelMousa/TTL?logo=github&label=LICENCE&color=blue)
+![Coverage](https://img.shields.io/badge/Coverage-71%25-lightgreens?logo=pytest&logoColor=lightgreen)
+![Version](https://img.shields.io/github/v/release/IsmaelMousa/TTL?label=Release)
+![GitHub Clones](https://img.shields.io/github/watchers/IsmaelMousa/TTL?style=flat&logo=github&label=Clone&color=greens)
+![License](https://img.shields.io/github/license/IsmaelMousa/TTL?label=LICENCE&color=lightgreen)
 
 </div>
 
@@ -19,7 +19,7 @@
 
 ## Overview
 
-Welcome to my humble **full-stack** project 👋
+Welcome to my humble **Fullstack** project 👋
 
 **TTL** is simulating a **todo task list** manager application, combined with an **AI Assistant** ✨.
 
@@ -210,7 +210,7 @@ Here is a summary 📝 for the purpose of each major module or component in **TT
 
 Here is how to use the **TTL** 💁‍♂️:
 
-1.
+1. Run the **TTL**
 
 ```
 make run
