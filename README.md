@@ -7,9 +7,8 @@
 ![CI](https://img.shields.io/github/actions/workflow/status/IsmaelMousa/todo-task-list/ci.yml?logo=github&label=CI)
 ![CD](https://img.shields.io/github/actions/workflow/status/IsmaelMousa/TTL/deployment.yml?logo=github&label=CD)
 ![Coverage](https://img.shields.io/badge/Coverage-71%25-lightgreens?logo=pytest&logoColor=lightgreen)
-![Version](https://img.shields.io/github/v/release/IsmaelMousa/TTL?label=Release)
-![GitHub Clones](https://img.shields.io/github/watchers/IsmaelMousa/TTL?style=flat&logo=github&label=Clones&color=greens)
-![License](https://img.shields.io/github/license/IsmaelMousa/TTL?label=LICENCE&color=purple)
+![Version](https://img.shields.io/github/v/release/IsmaelMousa/TTL?label=Version&color=greens)
+![License](https://img.shields.io/github/license/IsmaelMousa/TTL?label=LICENCE&color=greens)
 
 </div>
 
@@ -20,6 +19,8 @@
 ## Overview
 
 Welcome to my humble **Fullstack** project 👋
+
+This project made with love & patience ❤️‍🩹.
 
 **TTL** is simulating a **todo task list** manager application, combined with an **AI Assistant** ✨.
 
@@ -229,8 +230,6 @@ make run
 <br/>
 
 ## Feedback 💌
-
-This project made with love & patience ❤️‍🩹.
 
 We value your feedback and suggestions 🤟! If you've used **TTL** or explored its features, we'd love to hear
 from you 🫡. share your thoughts, ideas, or any issues you encountered while using the application 💡.
