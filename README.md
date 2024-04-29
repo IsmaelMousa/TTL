@@ -9,6 +9,7 @@
 ![Coverage](https://img.shields.io/badge/Coverage-71%25-lightgreens?logo=pytest&logoColor=lightgreen)
 ![Version](https://img.shields.io/github/v/release/IsmaelMousa/TTL?label=Version&color=greens)
 ![License](https://img.shields.io/github/license/IsmaelMousa/TTL?label=LICENCE&color=greens)
+![Clones](https://komarev.com/ghpvc/?username=IsmaelMousa&label=Clones&color=brightgreen)
 
 </div>
 
