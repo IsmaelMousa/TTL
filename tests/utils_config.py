@@ -16,7 +16,7 @@ class TestConfig(TestCase):
         self.app_cfg = AppConfig(host="localhost",
                                  port=8000,
                                  path="ttl",
-                                 version="1.1.0",
+                                 version="1.1.5",
                                  log_level="ERROR")
         self.database_cfg = DataBaseConfig(driver_name="postgresql",
                                            username="postgres",
