@@ -1,4 +1,4 @@
-# TTL (Todo Task List) <a href="#" target="_blank"><img src="./views/images/website-icon.png" alt="TTL" title="TTL" height="20"></a>
+# TTL (Todo Task List) <a href="https://ismaelmousa.github.io/TTL/views/index.html" target="_blank"><img src="./views/images/website-icon.png" alt="TTL" title="TTL" height="20"></a>
 
 [![Subtitle](https://readme-typing-svg.demolab.com?font=Helvetica&weight=600&size=15&pause=1000&color=F7F7F7&random=false&width=435&lines=What's+your+plan+today%3F+%F0%9F%A4%94)](https://github.com/IsmaelMousa/TTL)
 
@@ -179,11 +179,14 @@ TTL
  │   ├── index.js
  │   └── style.css     
  ├── .gitignore
+ ├── CODE_OF_CONDUCT.md
  ├── config.yml
+ ├── ISSUE_TEMPLATE.md
  ├── LICENSE.md
  ├── main.py
  ├── Makefile
  ├── poetry.lock
+ ├── PULL_REQUEST_TEMPLATE.md
  ├── pyproject.toml
  ├── README.md
  └── SECURITY.md
@@ -223,8 +226,8 @@ make run
 > [!TIP]
 >
 > To enhance your user experience, I recommend running the backend and frontend separately where:
-> 1. Start the Server-side using the instructions provided in [Step No.1](#usage).
-> 2. Execute the frontend by opening the [index.html](./views/index.html) file in the browser.
+> 1. Execute the backend side by using the instructions provided in [Step No.1](#usage).
+> 2. Execute the frontend side by opening the [index.html](./views/index.html) file in the browser.
 >
 > This approach ensures optimal performance and usability for both sides of the application.
 
