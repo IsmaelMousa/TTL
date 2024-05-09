@@ -1,7 +1,8 @@
 [tool.poetry]
 name = "TTL"
-version = "1.1.0"
-description = "Simple TODO Task List App"
+version = "1.1.5"
+license = "MIT"
+description = "Todo Task List application combined with an AI assistant."
 authors = ["Ismael Mousa <ismaelramzimousa@gmail.com>"]
 readme = "README.md"
 
@@ -14,9 +15,7 @@ pyyaml = "^6.0.1"
 sqlalchemy = "^2.0.25"
 psycopg2-binary = "^2.9.9"
 httpx = "^0.26.0"
-transformers = "^4.38.2"
-torch = "^2.2.1"
-tensorflow = "^2.16.1"
+transformers = {extras = ["sentencepiece"], version = "^4.40.2"}
 
 
 [tool.poetry.group.dev.dependencies]
