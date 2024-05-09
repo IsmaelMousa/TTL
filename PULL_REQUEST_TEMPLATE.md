@@ -1,8 +1,6 @@
-## Title, example:
+## Title, example: Prepare the endpoints & CRUD operations for tasks table
 
-Prepare the endpoints & CRUD operations for tasks table
-
-## Description, example: Prepare the endpoints & CRUD operations for tasks table
+## Description, example:
 
 Prepare the endpoints & CRUD operations for tasks table:
 
