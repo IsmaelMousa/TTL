@@ -3,7 +3,7 @@ name: Features
 about: Suggest an idea for this project
 title: TTL-[number]
 labels: enhancement
-assignees: ''
+assignees: '@'
 
 ---
 

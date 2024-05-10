@@ -3,7 +3,7 @@ name: Bugs
 about: Create a bug report to help us improve
 title: TTL-[number]
 labels: bug
-assignees: ''
+assignees: '@'
 
 ---
 
