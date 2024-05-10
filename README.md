@@ -181,12 +181,10 @@ TTL
  ├── .gitignore
  ├── CODE_OF_CONDUCT.md
  ├── config.yml
- ├── ISSUE_TEMPLATE.md
  ├── LICENSE.md
  ├── main.py
  ├── Makefile
  ├── poetry.lock
- ├── PULL_REQUEST_TEMPLATE.md
  ├── pyproject.toml
  ├── README.md
  └── SECURITY.md
